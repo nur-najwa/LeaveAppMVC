@@ -1,0 +1,30 @@
+﻿@model IEnumerable<LeaveAppMVC.Models.LeaveApplicationModel>
+
+<h2>Pending Approvals</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Period</th>
+            <th>Justification</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.EmployeeName</td>
+                <td>@x.StartDate.ToShortDateString() - @x.EndDate.ToShortDateString()</td>
+                <td>@x.Justification</td>
+                <td>
+                    <a href="/Leave/Approve/@x.Id" class="btn btn-success">Approve</a>
+                    <a href="/Leave/Reject/@x.Id" class="btn btn-danger">Reject</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
